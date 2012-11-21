@@ -17,6 +17,13 @@ public class JottoModelTest {
 	 * input of lengh 0 < input < 5
 	 * input with invalid character
 	 * input with asterisk
+	 * Gui Test:
+	 * Check by type new ID, incorrect format ID
+	 * Check to see if word with asterisk won't make the GUI unresponsive
+	 * Check all types of error for words
+	 * Check to see if table redraw after hitting new puzzle
+	 * Check too see if table handles long list of guest
+	 * 
 	 */
 
 	@Test

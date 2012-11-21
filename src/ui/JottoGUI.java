@@ -12,6 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
+import javax.swing.table.DefaultTableModel;
 
 import model.JottoModel;
 import model.ReturnMsg;
@@ -61,10 +62,11 @@ public class JottoGUI extends JFrame {
 	 */
 	private static int puzzleID = 16952;
 
+	private Random random;
+
 	/**
-	 * setting the layout for the GUI 
-	 * Layout consists of three Group Layout which make up puzzle number group,
-	 * guess group and table group
+	 * setting the layout for the GUI Layout consists of three Group Layout
+	 * which make up puzzle number group, guess group and table group
 	 */
 	public void setLayout() {
 		Container cp = this.getContentPane();
@@ -195,24 +197,22 @@ public class JottoGUI extends JFrame {
 	 * modelTable will be reset to ihe initial state
 	 */
 	private void setNewPuzzle() {
-		try {
-			int newPuzzleNo = Integer.parseInt(newPuzzleNumber.getText());
-			if (newPuzzleNo != puzzleID) {
-				puzzleID = newPuzzleNo;
-				puzzleNumber.setText("Puzzle #" + puzzleID);
-				model.clearRow();
-				pack();
-			} else {
-				return;
+		String puzzleId = newPuzzleNumber.getText();
+		if (puzzleId.length() == 0) {
+			random = new Random();
+			puzzleID = random.nextInt(10000);
+		} else {
+			try {
+				puzzleID = Integer.parseInt(puzzleId);
+			} catch (NumberFormatException e) {
+				puzzleID = random.nextInt(10000);
 			}
-		} catch (NumberFormatException ex) {
-			Random r = new Random();
-			puzzleID = r.nextInt(10000);
-			newPuzzleNumber.setText(puzzleID + "");
-			puzzleNumber.setText("Puzzle #" + puzzleID);
-			model.clearRow();
-			pack();
 		}
+		puzzleId = "" + puzzleID;
+		puzzleNumber.setText("Puzzle #" + puzzleId);
+		newPuzzleNumber.setText("");
+		model.clearRow();
+		pack();
 
 	}
 
