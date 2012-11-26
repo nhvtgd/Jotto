@@ -187,8 +187,9 @@ public class JottoGUI extends JFrame {
 
 	/**
 	 * Get the result from the server and reset guess text field add the return
-	 * message to table in correct format modifies: JottoModel by add one row to
-	 * it, guessField resets to empty string
+	 * message to table in correct format 
+	 * Modifies: JottoModel by add one row to it,
+	 * guessField resets to empty string
 	 */
 	private void getPuzzleResult() {
 		String guessStr = guess.getText();
@@ -201,8 +202,9 @@ public class JottoGUI extends JFrame {
 	/**
 	 * Set the puzzle number to retrieve puzzle from the server if the user
 	 * inputs incorrect format puzzle number, puzzle number will be randomly
-	 * generated. The puzzle number will be displayed on the GUI modifies:
-	 * modelTable will be reset to ihe initial state
+	 * generated. The puzzle number will be displayed on the GUI 
+	 * Modifies: modelTable will be reset to ihe initial state,
+	 * puzzleId field will be updated
 	 */
 	private void setNewPuzzle() {
 		String puzzleId = newPuzzleNumber.getText();

@@ -10,11 +10,23 @@ package model;
  * 
  */
 public class ReturnMsg {
+	/**number of character in common*/
 	private final int common;
+	/**number of character in correct position*/
 	private final int correct;
+	/**guess string from the user*/
 	private final String guess;
+	/**Type represents the error return by server*/
 	private final ERROR error;
+	
 	private final STATE state;
+	
+	/**Displayed error messages on the table*/
+	private final String ERROR_MESSAGE0 = "Ill-formatted request";
+	
+	private final String ERROR_MESSAGE1 =  "Non-number puzzle ID";
+	
+	private final String ERROR_MESSAGE2 = "Invalid guess. Length of guess != 5 or guess is not a dictionary word.";
 
 	/** Possible error received from the server */
 	public enum ERROR {
@@ -162,11 +174,11 @@ public class ReturnMsg {
 
 	public String toString() {
 		if (error == ERROR.error0) {
-			return "Ill-formatted request";
+			return ERROR_MESSAGE0;
 		} else if (error == ERROR.error1) {
-			return "Non-number puzzle ID";
+			return ERROR_MESSAGE1;
 		} else if (error == ERROR.error2) {
-			return "Invalid guess. Length of guess != 5 or guess is not a dictionary word.";
+			return ERROR_MESSAGE2;
 		} else {
 			return "guess " + common + " " + correct;
 		}
