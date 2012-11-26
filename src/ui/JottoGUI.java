@@ -12,7 +12,6 @@ import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
-import javax.swing.table.DefaultTableModel;
 
 import model.JottoModel;
 import model.ReturnMsg;
@@ -137,6 +136,15 @@ public class JottoGUI extends JFrame {
 
 		newPuzzleNumber = new JTextField();
 		newPuzzleNumber.setName("newPuzzleNumber");
+		newPuzzleNumber.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				setNewPuzzle();
+				
+			}
+			
+		});
 
 		puzzleNumber = new JLabel();
 		puzzleNumber.setName("puzzleNumber");
